@@ -3,3 +3,95 @@ Por que React?
 	Documentação oficial do React
 	Link: https://pt-br.reactjs.org/docs/getting-started.html
 
+	React é uma biblioteca de renderização de componentes
+
+	Usando o React CodePen
+		Link: https://codepen.io/
+		Site de compartilhamento de pequenos códigos estáticos
+
+		Em configuração usar o babel para fazer o superset de js
+		   Ir no pen settings e configurar o 
+		   		- preprocessor para o babel em Js
+		   		- adicionar as add external scpriptts pen do react
+		   			- importar o react e o react dom
+
+
+		Criando um componente em react
+
+			Em Js //Utilizando as 2 bibliotecas
+
+				const App = React.createElement('div', null, 'Olá Mundo');
+				ReactDOM.render(App,document.querySelector('#app'));
+
+			No html a renderização
+				
+				<div id="app">
+  
+  				</div>
+
+
+  			Aninhando componentes
+
+  			No js
+  			const Hello =  React.createElement('div', null, 'Olá, Mundo !!!');
+			const App = React.createElement('div', null, Hello);
+
+			no html
+			ReactDOM.render(App,document.querySelector('#app'))
+
+		O JSX é uma forma amígável de leitura 
+
+
+		Node do curso 12.18.2
+		Para mudar a versão do node use 
+		node -use 12.18.2
+
+
+	1.5. Iniciando a nossa SPA com React CLI
+
+		Single Page Application(Aplicação de Página Única)
+		Uma única página contém toda a aplicação
+		Geralmente é um arquivo html estatíco
+		Se comunica com o backend por meio de uma API
+
+		Vantagens
+			- Melhora a experiência do Usuário
+			- Aumento de performance
+			- Manutenabilidade
+			- Redução de custos
+
+		Quem usa SPAs?
+			- Netflix
+			- Gmail
+			- YouTube
+			- Google Drive
+			- PayPall
+
+		Onde usar?
+			- Em aplicações muito dinâmicas
+			- Em aplicações que lidam com grande volume e tipos de dados
+			- Aplicações que manipulam muito o DOM
+
+		Onde não faz sentido usar?
+			- Sites institucionais por serem muito estáticos
+
+
+		Criando o projeto com React Cli
+			- Gera toda estrutura que precisamos para nossa SPA
+			- Salva muito o tempo
+			- Abstrai boa parte da lógica
+			- Personalizável com template
+			- Não precisa instalar
+
+
+		Criando um projeto com React-CLI	
+			Documentação React Cli
+			Link: https://create-react-app.dev/docs/getting-started/
+			
+			npx create-react-app nome-do-app --template nome-do-template
+			npx create-react-app alga-stock --template typescript
+
+
+
+
+
