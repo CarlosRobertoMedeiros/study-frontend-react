@@ -92,6 +92,22 @@ Por que React?
 			npx create-react-app alga-stock --template typescript
 
 
+		Fluxo de chamada da SPa do React
+			index.tsx = aqui ele informa o root que vai ser renderizado através do index.html
+
+		Link do Projeto final do Curso:  https://github.com/algaworks/algastock
+
+
+		Tipos de componentes
+
+		Os componentes baseados em classe
+			Ainda se utilizar apesar de ser descontinuado no futuro
+
+
+		Componentes funcionais
+
+		Continuar da aula 2.2 a partir de 04:00
+		
 
 
 
