@@ -106,8 +106,174 @@ Por que React?
 
 		Componentes funcionais
 
-		Continuar da aula 2.2 a partir de 04:00
+		Cria um componente e faz a chamada através de um parâmetro
+		O método props seria o arguments do js
+		Ex.
 		
+		Arquivo app.tsx
+			<ClassComponent name="Meu País Brasil" />
+		
+		Criando um componente baseado em classe
+
+		import React from 'react';
+
+		class ClassComponent extends React.Component<{name: string}> {
+
+			state = {
+				name: 'Mundo'
+			}
+			
+			render(){
+				return <div>Olá, {this.state.name} {this.props.name}. Eu sou um componente baseado em classe</div>
+			}
+
+		}
+
+		export default ClassComponent
+		
+		Como criar um componente que altera o estado
+		Ex.
+
+		import React from 'react';
+
+		class ClassComponent extends React.Component<{name: string}> {
+
+			state = {
+				name: 'Mundo'
+			}
+			
+			render(){
+				return <div>
+					<p>name: {this.state.name}</p>
+					<button onClick={()=>{
+						this.setState({name: 'Roberto'})    
+					}}>Click me</button>
+				</div>
+			}
+
+		}
+
+		export default ClassComponent
+
+	************************************************************************************************************************************
+	2.3. Ciclos de vida dos componentes
+
+		1. Ao Montar o componente
+
+		Ao criar uma classe
+			Chama o construtor
+			em seguida chama o método render
+			O react faz automaticamente atualização nas referências do DOM
+			componentDidMount => Acessa-se as modificações utilizando o componentDidMount
+
+		2. Ao atualizar o componente
+			chama o método render
+			O react faz automaticamente atualização nas referências do DOM
+			componentDidUpdate => Acessa-se as modificações utilizando o componentDidUpdate
+		
+		3. Ao excluir o componente
+			chama o método componentWillMount antes de excluir o componente
+
+	************************************************************************************************************************************
+	2.4. Componentes funcionais (com hooks)
+
+		Um componente funcional é uma função que retorna o objeto
+
+		Diferença entre Componentes funcionais e componentes baseados em classe
+	
+		1 Forma como se lida com propriedades
+			Em componentes funcionais são acessíveis ao receber no primeiro parâmetro
+
+			Criando o componente
+			import React from 'react';
+			import './TestComponent.css';
+
+			function TestComponent(props: { name : string}) {
+			return <div className="TestComponent">
+				Olá, { props.name }    
+			</div>
+			}
+
+			export default TestComponent;
+
+			No arquivo app.tsx
+			<TestComponent name="Roberto"  />
+		
+		2 Forma como se lida com estado em um componente funcional
+
+			Em resumo tem que fazer um Hook para que a alteração do estado dentro de uma proprieadade de um componente funcional execute com sucesso
+
+			Ex.
+			import React, { useState } from 'react';
+			import './TestComponent.css';
+
+			function TestComponent(props: { name : string}) {
+				
+				const [age,setAge] = useState(21);
+
+				return <div className="TestComponent">
+					Olá, { props.name } , {age}  
+					<button onClick={()=>{
+						setAge(age + 1)
+						console.log(age);
+					}}>
+					+
+					</button>
+
+				</div>
+			}
+
+			export default TestComponent;
+
+	************************************************************************************************************************************
+	2.5. Entendendo o hook useEffect
+
+		O useEffect é executado após a criação do componente
+
+		Ex:
+		import React, { useState, useEffect } from 'react';
+		import './TestComponent.css';
+
+		function TestComponent(props: { name : string}) {
+			
+			const [age,setAge] = useState(21);
+
+			useEffect(() =>{
+				console.log('Componente foi Criado ');
+
+			}, []);
+
+			useEffect(() =>{
+				console.log('Age foi atualizado para'+ age);
+
+			}, [age]);
+
+			console.log('Segundo Log');
+
+
+			return <div className="TestComponent">
+				Olá, { props.name } , {age}  
+				<button onClick={()=>{
+					setAge(age + 1)
+					console.log(age);
+				}}>
+				+
+				</button>
+
+			</div>
+		}
+
+		export default TestComponent;
+
+		O useEffect foi realizado sem dependência e com Dependência, passando o Age.
+		A diferença do componentDidUpdate com relação ao useEffect é que 
+			O useEffect vai ser executado na primeira vez que montar o componente e em todas as outras vezes que o valor do meu estado for alterado
+
+	************************************************************************************************************************************
+	2.6. Dando cara à nossa aplicação (estilizando com CSS)
+		Continuar daqui a partir de 1minuto
+
+
 
 
 
