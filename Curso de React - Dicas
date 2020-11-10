@@ -272,8 +272,24 @@ Por que React?
 	************************************************************************************************************************************
 	2.6. Dando cara à nossa aplicação (estilizando com CSS)
 		Continuar daqui a partir de 1minuto
+		Link de estilização de reset do css: https://pt-br.reactjs.org/docs/faq-styling.html#gatsby-focus-wrapper
 
+		Pesquisar no google fonts a font lato e realizar o import para o prjeto, assim o sistema vai fazer a requisição.
 
+	************************************************************************************************************************************
+	2.7. Entendendo tudo sobre Props
 
+	Documentação oficial sobre props: 
+	Link: https://pt-br.reactjs.org/docs/components-and-props.html
 
+	Props é uma maneira de passar dados do pai para o filho
+
+	************************************************************************************************************************************
+	2.8. Shared components e arquitetura
+
+	Segregando componentes que vão ser compartilhados com componentes que não
+
+	************************************************************************************************************************************
+	2.9. Criando o componente Input
+	Continuar daqui
 
