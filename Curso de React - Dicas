@@ -291,5 +291,33 @@ Por que React?
 
 	************************************************************************************************************************************
 	2.9. Criando o componente Input
-	Continuar daqui
 
+		Refez o processo, porém utilizou um bind para um Input
+		o valor React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{
+		foi capturado mediante a visualização de quem é estendido pelo input, apenas refleti a mesma extensão
+
+		import React from 'react';
+		import './Input.css'
+
+		declare interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{
+			label:string
+		}
+
+		const Input: React.FC<InputProps>= (props) =>{
+			return <div className="AppInput">
+				<label>
+					<span>{ props.label }</span>
+					
+					<input 
+						{...props} 
+					/>
+
+				</label>
+			</div>
+		}
+
+		export default Input
+
+	************************************************************************************************************************************
+	2.10. Renderização de listas em detalhes
+Continuar 2.10
