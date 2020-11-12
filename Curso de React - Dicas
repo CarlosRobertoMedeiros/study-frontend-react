@@ -320,4 +320,96 @@ Por que React?
 
 	************************************************************************************************************************************
 	2.10. Renderização de listas em detalhes
-Continuar 2.10
+	Documentação sobre listas
+	Link: https://pt-br.reactjs.org/docs/lists-and-keys.html
+	Ideia simples de iteração por meio de um método de programação funcional
+
+	    {
+          ['Daniel','Willian','Thiago'].map((nome,indice)=>{
+              return <div key={indice}>
+                { nome }
+              </div>
+          })
+        }
+
+		exemplo com uma lista não ordenada
+		<ul>
+        {
+          ['Daniel','Willian','Thiago'].map((nome,indice)=>{
+              return <li key={indice}>
+                { nome }
+              </li>
+          })
+        }
+        </ul>
+
+	************************************************************************************************************************************
+	2.11. Preparando para criar o componente de tabela
+		Só limpeza de código e criação do componente compartilhado Table
+
+	************************************************************************************************************************************
+	2.12. Estrutura HTML de uma tabela
+		Sem nenhuma novidade
+	
+	************************************************************************************************************************************
+	2.13. Estilizando o componente de tabela com Sass
+		Guia de Sass Básico
+		Link: https://sass-lang.com/guide
+	
+		Instalando o node-sass para utilizar o scss(superset de css)
+		npm i -D node-sass   //o -D é para dev
+
+		Como ponto importante o sass apenas agrupa os objetos
+	
+	************************************************************************************************************************************
+	2.14. O grande problema do componente de tabela genérico
+
+		Utilizando um loop para preencher os dados tanto para thead quanto tbody
+
+		import React from 'react';
+		import './Table.scss';
+		import Produtos from './Table.mockdata';
+
+		const headers = [
+			{chave: 'nome' , valor:'Produto'},
+			{chave: 'preco' , valor:'Preço'},
+			{chave: 'estoque' , valor:'Estoque Disponível'},
+		]
+
+
+
+		const Table = () =>{
+			return <table className="AppTable">   
+				<thead>
+					<tr>
+						{
+							headers.map(cabecalho =><th key={cabecalho.chave}>{cabecalho.valor}</th>)
+						}
+					</tr>
+				</thead>
+				<tbody>
+					{
+					Produtos.map(produto => <tr>
+						<td>{ produto.nome }</td>
+						<td>{ produto.preco }</td>
+						<td className="right">{ produto.estoque }</td>
+						</tr>)
+					}
+				</tbody>
+			
+			</table>
+		}
+
+		export default Table
+
+	************************************************************************************************************************************
+	2.15. Resolvendo o problema do componente de tabela genérico com organização de dado
+
+
+	
+		
+
+	
+
+
+
