@@ -8,6 +8,28 @@ const headers = [
     {chave: 'estoque' , valor:'Estoque Disponível'},
 ]
 
+declare interface TableHeader{
+    chave:string
+    valor:string;
+    alinhaaDireita?:boolean
+}
+
+type IndexedHeaders = {
+    [chave:string]: TableHeader
+}
+
+function organizaDados(data:[],headers:TableHeader[]){
+    const indexedHeaders: IndexedHeaders = {}
+
+    headers.forEach(header =>{
+        indexedHeaders[header.chave] = {
+            ...header
+        }
+    })
+
+    const headerKeysInOrdem = Object.keys(indexedHeaders)
+
+}
 
 
 const Table = () =>{
