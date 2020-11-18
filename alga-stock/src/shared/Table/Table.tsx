@@ -1,54 +1,61 @@
 import React from 'react';
 import './Table.scss';
-import Produtos from './Table.mockdata';
+import organizaDados from '../../utils/organizeDataForTable';
 
-const headers = [
-    {chave: 'nome' , valor:'Produto'},
-    {chave: 'preco' , valor:'Preço'},
-    {chave: 'estoque' , valor:'Estoque Disponível'},
-]
-
-declare interface TableHeader{
+export interface TableHeader{
     chave:string
     valor:string;
     alinhaaDireita?:boolean
 }
 
-type IndexedHeaders = {
-    [chave:string]: TableHeader
+declare interface TableProps{
+    headers: TableHeader[]
+    data: any[]
+
+    ativaAcoes?:boolean
+    aoDeletar?:(item:any) =>void
+    aoDetalhar?:(item:any) =>void
+    aoEditar?:(item:any) =>void
 }
 
-function organizaDados(data:[],headers:TableHeader[]){
-    const indexedHeaders: IndexedHeaders = {}
-
-    headers.forEach(header =>{
-        indexedHeaders[header.chave] = {
-            ...header
-        }
-    })
-
-    const headerKeysInOrdem = Object.keys(indexedHeaders)
-
-}
-
-
-const Table = () =>{
+const Table: React.FC<TableProps> = (props) =>{
+    const [OrganizedData,indexedHeaders] = organizaDados(props.data , props.headers)
     return <table className="AppTable">   
         <thead>
             <tr>
                 {
-                    headers.map(cabecalho =><th key={cabecalho.chave}>{cabecalho.valor}</th>)
+                    props.headers.map(cabecalho =>
+                        <th 
+                            className={cabecalho.alinhaaDireita ? 'right':''} 
+                            key={cabecalho.chave}
+                        >
+                            {cabecalho.valor}
+                        </th>
+                    )
                 }
             </tr>
         </thead>
         <tbody>
+        {
+        OrganizedData.map((row, i) => {
+          return <tr key={i}>
             {
-               Produtos.map(produto => <tr>
-                   <td>{ produto.nome }</td>
-                   <td>{ produto.preco }</td>
-                   <td className="right">{ produto.estoque }</td>
-                </tr>)
+              Object
+                .keys(row)
+                .map((item, i) =>
+                  item !== '$original'
+                    ? <td
+                        key={row.$original.id + i}
+                        className={indexedHeaders[item].alinhaaDireita ? 'right' : ''}
+                      >
+                        { row[item] }
+                      </td>
+                    : null
+                )
             }
+          </tr>
+        })
+      }
         </tbody>
     
     </table>
